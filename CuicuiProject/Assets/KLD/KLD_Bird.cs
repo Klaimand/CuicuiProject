@@ -9,6 +9,7 @@ public class KLD_Bird : MonoBehaviour
     Rigidbody2D rb;
     Transform scaler;
     KLD_LevelManager levelManager;
+    KLD_ScoreManager scoreManager;
 
     //global
     Vector2 velo = Vector2.zero;
@@ -30,6 +31,7 @@ public class KLD_Bird : MonoBehaviour
     void Start()
     {
         levelManager = GameObject.Find("Level").GetComponent<KLD_LevelManager>();
+        scoreManager = GameObject.Find("ScoreManager").GetComponent<KLD_ScoreManager>();
 
         scaler = transform.GetChild(0);
         scale.x = 1f;
@@ -64,6 +66,7 @@ public class KLD_Bird : MonoBehaviour
             scale.x = goRight ? 1f : -1f;
             scaler.localScale = scale;
 
+            scoreManager.AddScore();
             levelManager.BirdTouch(!goRight);
         }
         if (other.gameObject.CompareTag("Spike"))
@@ -79,6 +82,11 @@ public class KLD_Bird : MonoBehaviour
 
         dead = true;
         Destroy(gameObject);
+    }
+
+    public void SetSpeed(float _speed)
+    {
+        speed = _speed;
     }
 
 

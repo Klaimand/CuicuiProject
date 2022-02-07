@@ -6,6 +6,8 @@ public class KLD_LevelManager : MonoBehaviour
 {
     [SerializeField] GameObject spike = null;
 
+    int spikeNumber = 4;
+
     [SerializeField] Transform[] leftSpots;
     [SerializeField] Transform[] rightSpots;
 
@@ -13,7 +15,7 @@ public class KLD_LevelManager : MonoBehaviour
     Transform leftSpikeParent;
     Transform rightSpikeParent;
 
-    [SerializeField, Header("Spikes slike")] AnimationCurve slideCurve;
+    [SerializeField, Header("Spikes slide")] AnimationCurve slideCurve;
     [SerializeField] float slideTime = 0.2f;
     [SerializeField] float slideOffset = 0.5f;
 
@@ -71,7 +73,7 @@ public class KLD_LevelManager : MonoBehaviour
 
     public void BirdTouch(bool _right)
     {
-        PlaceSpots(!_right, 5);
+        PlaceSpots(!_right, spikeNumber);
         StartCoroutine(OffsetSpikes(!_right));
         StartCoroutine(RemoveSpots(_right, slideTime + 0.1f));
     }
@@ -108,6 +110,11 @@ public class KLD_LevelManager : MonoBehaviour
         {
             child.localPosition += Vector3.right * slideOffset;
         }
+    }
+
+    public void SetSpikeNumber(int _spikes)
+    {
+        spikeNumber = _spikes;
     }
 
 
