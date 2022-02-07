@@ -357,20 +357,55 @@ MonoBehaviour:
     levelColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
     backgroundColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
     scoreColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
-    scoreCircleColor: {r: 1, g: 0.504717, b: 0.504717, a: 1}
+    scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
   - startAt: 5
-    birdSpeed: 6
-    nbSpikes: 6
-    levelColor: {r: 0.745283, g: 0.094918124, b: 0.094918124, a: 1}
+    birdSpeed: 4.5
+    nbSpikes: 5
+    levelColor: {r: 0.504, g: 0.06366315, b: 0.06366315, a: 1}
     backgroundColor: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
-    scoreColor: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
+    scoreColor: {r: 1, g: 0.4, b: 0.4, a: 1}
     scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
   - startAt: 10
-    birdSpeed: 20
-    nbSpikes: 1
-    levelColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-    scoreColor: {r: 1, g: 1, b: 1, a: 1}
+    birdSpeed: 4.5
+    nbSpikes: 6
+    levelColor: {r: 0.5, g: 0.30980393, b: 0, a: 1}
+    backgroundColor: {r: 1, g: 0.8484211, b: 0.6, a: 1}
+    scoreColor: {r: 1, g: 0.8471204, b: 0.6, a: 1}
+    scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  - startAt: 20
+    birdSpeed: 5
+    nbSpikes: 6
+    levelColor: {r: 0.30070755, g: 0.3773585, b: 0, a: 1}
+    backgroundColor: {r: 0.9031413, g: 1, b: 0.5, a: 1}
+    scoreColor: {r: 0.9031413, g: 1, b: 0.5, a: 1}
+    scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  - startAt: 30
+    birdSpeed: 5
+    nbSpikes: 7
+    levelColor: {r: 0.25493908, g: 0.5, b: 0, a: 1}
+    backgroundColor: {r: 0.76862746, g: 1, b: 0.5254902, a: 1}
+    scoreColor: {r: 0.76800656, g: 1, b: 0.5235849, a: 1}
+    scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  - startAt: 40
+    birdSpeed: 5
+    nbSpikes: 8
+    levelColor: {r: 0, g: 0.5, b: 0.4784093, a: 1}
+    backgroundColor: {r: 0.6650944, g: 1, b: 0.9839828, a: 1}
+    scoreColor: {r: 0.6666667, g: 1, b: 0.9843137, a: 1}
+    scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  - startAt: 50
+    birdSpeed: 5.5
+    nbSpikes: 8
+    levelColor: {r: 0, g: 0.28311682, b: 0.5, a: 1}
+    backgroundColor: {r: 0.5058824, g: 0.7882353, b: 1, a: 1}
+    scoreColor: {r: 0.504717, g: 0.78634846, b: 1, a: 1}
+    scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
+  - startAt: 60
+    birdSpeed: 5.5
+    nbSpikes: 9
+    levelColor: {r: 0.329597, g: 0, b: 0.5, a: 1}
+    backgroundColor: {r: 0.81605625, g: 0.4669811, b: 1, a: 1}
+    scoreColor: {r: 0.8156863, g: 0.46666667, b: 1, a: 1}
     scoreCircleColor: {r: 0, g: 0, b: 0, a: 1}
   scoretext: {fileID: 1070129727}
   cam: {fileID: 1797813552}
