@@ -8,6 +8,7 @@ public class KLD_Bird : MonoBehaviour
     //refs
     Rigidbody2D rb;
     Transform scaler;
+    KLD_LevelManager levelManager;
 
     //global
     Vector2 velo = Vector2.zero;
@@ -16,8 +17,9 @@ public class KLD_Bird : MonoBehaviour
     //attributes
     [SerializeField] float speed = 4f;
     [SerializeField] float jumpVelo = 5f;
+    bool dead = false;
 
-    bool goLeft = false;
+    bool goRight = false;
 
     void Awake()
     {
@@ -27,10 +29,13 @@ public class KLD_Bird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelManager = GameObject.Find("Level").GetComponent<KLD_LevelManager>();
+
         scaler = transform.GetChild(0);
         scale.x = 1f;
         scale.y = 1f;
         scale.z = 1f;
+        goRight = true;
     }
 
     // Update is called once per frame
@@ -38,7 +43,7 @@ public class KLD_Bird : MonoBehaviour
     {
         velo = rb.velocity;
 
-        velo.x = speed * (goLeft ? 1f : -1f);
+        velo.x = speed * (goRight ? 1f : -1f);
 
 
 
@@ -55,10 +60,26 @@ public class KLD_Bird : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            goLeft = !goLeft;
-            scale.x = goLeft ? 1f : -1f;
+            goRight = !goRight;
+            scale.x = goRight ? 1f : -1f;
             scaler.localScale = scale;
-            print("p");
+
+            levelManager.BirdTouch(!goRight);
+        }
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            Die();
         }
     }
+
+    void Die()
+    {
+        if (dead)
+            return;
+
+        dead = true;
+        Destroy(gameObject);
+    }
+
+
 }
