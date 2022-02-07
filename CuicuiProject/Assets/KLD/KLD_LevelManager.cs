@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KLD_LevelManager : MonoBehaviour
 {
+    [SerializeField] KLD_CandyManager candyManager;
+
     [SerializeField] GameObject spike = null;
 
     int spikeNumber = 4;
@@ -14,6 +16,8 @@ public class KLD_LevelManager : MonoBehaviour
     [SerializeField] Transform spikesParent;
     Transform leftSpikeParent;
     Transform rightSpikeParent;
+
+    [SerializeField] float candyOffset = 1f;
 
     [SerializeField, Header("Spikes slide")] AnimationCurve slideCurve;
     [SerializeField] float slideTime = 0.2f;
@@ -47,7 +51,7 @@ public class KLD_LevelManager : MonoBehaviour
             spotIndexesLeft.Add(i);
         }
 
-        for (int i = 0; i < _nb; i++)
+        for (int i = 0; i < _nb + 1; i++)
         {
             int indexToRemove = spotIndexesLeft[Random.Range(0, spotIndexesLeft.Count)];
 
@@ -56,7 +60,19 @@ public class KLD_LevelManager : MonoBehaviour
             Instantiate(spike, spots[indexToRemove].position, Quaternion.identity, _right ? rightSpikeParent : leftSpikeParent);
 
             spotIndexesLeft.Remove(indexToRemove);
+
+            if (i == _nb)//candy placement
+            {
+                int indexToRemovee = spotIndexesLeft[Random.Range(0, spotIndexesLeft.Count)];
+
+                Transform[] spotss = _right ? rightSpots : leftSpots;
+
+                candyManager.PlaceCandy(
+                    spotss[indexToRemovee].position + (_right ? Vector3.left * candyOffset : Vector3.right * candyOffset)
+                    );
+            }
         }
+
     }
 
     IEnumerator RemoveSpots(bool _right, float _delay)
