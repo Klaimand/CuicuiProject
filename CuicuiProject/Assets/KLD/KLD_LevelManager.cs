@@ -5,6 +5,7 @@ using UnityEngine;
 public class KLD_LevelManager : MonoBehaviour
 {
     [SerializeField] KLD_CandyManager candyManager;
+    [SerializeField] KLD_ScoreManager scoreManager;
 
     [SerializeField] GameObject spike = null;
 
@@ -53,15 +54,19 @@ public class KLD_LevelManager : MonoBehaviour
 
         for (int i = 0; i < _nb + 1; i++)
         {
-            int indexToRemove = spotIndexesLeft[Random.Range(0, spotIndexesLeft.Count)];
+            if (!(i == _nb))
+            {
+                int indexToRemove = spotIndexesLeft[Random.Range(0, spotIndexesLeft.Count)];
 
-            Transform[] spots = _right ? rightSpots : leftSpots;
+                Transform[] spots = _right ? rightSpots : leftSpots;
 
-            Instantiate(spike, spots[indexToRemove].position, Quaternion.identity, _right ? rightSpikeParent : leftSpikeParent);
+                GameObject go = Instantiate(spike, spots[indexToRemove].position, Quaternion.identity, _right ? rightSpikeParent : leftSpikeParent);
+                go.transform.GetChild(0).GetComponent<SpriteRenderer>().color = scoreManager.GetLevelColor();
 
-            spotIndexesLeft.Remove(indexToRemove);
+                spotIndexesLeft.Remove(indexToRemove);
+            }
 
-            if (i == _nb)//candy placement
+            else //candy placement
             {
                 int indexToRemovee = spotIndexesLeft[Random.Range(0, spotIndexesLeft.Count)];
 
@@ -92,6 +97,15 @@ public class KLD_LevelManager : MonoBehaviour
         PlaceSpots(!_right, spikeNumber);
         StartCoroutine(OffsetSpikes(!_right));
         StartCoroutine(RemoveSpots(_right, slideTime + 0.1f));
+    }
+
+    public void RemoveSpikesAtStart()
+    {
+        StartCoroutine(OffsetSpikes(false));
+        StartCoroutine(RemoveSpots(false, slideTime + 0.1f));
+
+        StartCoroutine(OffsetSpikes(true));
+        StartCoroutine(RemoveSpots(true, slideTime + 0.1f));
     }
 
     IEnumerator OffsetSpikes(bool _touchedRight)

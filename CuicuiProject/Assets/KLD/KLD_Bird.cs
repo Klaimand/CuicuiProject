@@ -10,6 +10,7 @@ public class KLD_Bird : MonoBehaviour
     Transform scaler;
     KLD_LevelManager levelManager;
     KLD_ScoreManager scoreManager;
+    KLD_GameManager gameManager;
 
     //global
     Vector2 velo = Vector2.zero;
@@ -32,6 +33,7 @@ public class KLD_Bird : MonoBehaviour
     {
         levelManager = GameObject.Find("Level").GetComponent<KLD_LevelManager>();
         scoreManager = GameObject.Find("ScoreManager").GetComponent<KLD_ScoreManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<KLD_GameManager>();
 
         scaler = transform.GetChild(0);
         scale.x = 1f;
@@ -81,7 +83,12 @@ public class KLD_Bird : MonoBehaviour
             return;
 
         dead = true;
-        Destroy(gameObject);
+        gameManager.EndGame();
+    }
+
+    public void SetNotDead()
+    {
+        dead = false;
     }
 
     public void SetSpeed(float _speed)

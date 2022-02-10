@@ -17,6 +17,12 @@ public class KLD_CandyManager : MonoBehaviour
         candy.SetActive(false);
     }
 
+    public void RemoveCandy()
+    {
+        isCandyPlaced = false;
+        candy.SetActive(false);
+    }
+
     public void PlaceCandy(Vector3 position)
     {
         if (!isCandyPlaced)

@@ -64,6 +64,18 @@ public class KLD_ScoreManager : MonoBehaviour
 
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+        scoretext.text = score.ToString("00");
+        CheckLevelChange();
+    }
+
+    public Color GetLevelColor()
+    {
+        return curlevel.levelColor;
+    }
+
 }
 
 [System.Serializable]
